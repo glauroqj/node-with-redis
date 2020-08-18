@@ -1,5 +1,4 @@
 import Express from 'express'
-import path from 'path'
 /** apollo */
 import { getDataFromTree } from '@apollo/react-ssr'
 /** core app */
