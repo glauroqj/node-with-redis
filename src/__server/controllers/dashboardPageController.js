@@ -9,7 +9,7 @@ import { ServerStyleSheet } from 'styled-components'
 import Html from '../views/Html'
 
 export default async ( req, res ) => {
-  console.log('< NOT FOUND PAGE CONTROLLER >')
+  console.log('< DASHBOARD PAGE CONTROLLER >')
   /* We are ready to render for real */
   const content = renderToString(res.App)
   /* prepare style on server */
@@ -26,7 +26,7 @@ export default async ( req, res ) => {
 
   // Render page
   res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0')
-  res.status(404)
+  res.status(200)
   res.send(`<!DOCTYPE html>\n${renderToStaticMarkup(html)}`)
   res.end()
 
