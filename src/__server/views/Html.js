@@ -13,6 +13,7 @@ const Html = ({styles, content, state}) => (
       }} />
 
       <script defer src="client.bundle.js" />
+      
       <script dangerouslySetInnerHTML={{
         __html: `window.__APOLLO_STATE__=${JSON.stringify(state).replace(/</g, '\\u003c')}`,
       }} />

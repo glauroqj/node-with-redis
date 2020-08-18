@@ -105,3 +105,5 @@ dist
 
 dist/*
 build/*
+src/build/*
+src/dist/*
