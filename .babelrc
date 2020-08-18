@@ -27,7 +27,7 @@
         "module-resolver", {
           "root": ["."],
           "alias": {
-            "infra": "./src/infra",
+            "infra": "./infra",
             "routes": "./src/routes",
             "components": "./src/components",
             "pages": "./src/pages",
