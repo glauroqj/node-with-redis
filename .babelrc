@@ -32,7 +32,7 @@
             "components": "./src/components",
             "pages": "./src/pages",
             "assets": "./src/assets",
-            "server": "./src/server",
+            "server": "./src/__server",
             "configs": "./src/configs",
             "providers": "./src/providers"
           },

@@ -5,6 +5,8 @@ import { getDataFromTree } from '@apollo/react-ssr'
 import createApolloClient from './middlewares/createApolloClient'
 /** server routes */
 import serverRoutes from './routes/serverRoutes'
+/** utils */
+import createRedis from 'server/utils/createRedis'
 
 const app = new Express()
 
@@ -14,6 +16,9 @@ app.use(Express.static('./build/client'))
 
 /** create apollo client */
 app.use(createApolloClient)
+
+/** create redis client */
+createRedis(app)
 
 app.use(async (req, res, next) => {
   try {

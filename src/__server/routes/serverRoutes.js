@@ -5,12 +5,12 @@ import {
   LOGIN_API_URL
 } from 'configs/constants'
 
-import dashboardPageController from '../controllers/dashboardPageController'
-import homePageController from '../controllers/homePageController'
-import notFoundPageController from '../controllers/notFoundPageController'
+import dashboardPageController from 'server/controllers/dashboardPageController'
+import homePageController from 'server/controllers/homePageController'
+import notFoundPageController from 'server/controllers/notFoundPageController'
   
 /**api */
-import loginAPIController from '../controllers/loginAPIController'
+import loginAPIController from 'server/controllers/loginAPIController'
 
 export default app => {
   app.get(HOME_PAGE_URL, homePageController)
