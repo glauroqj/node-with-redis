@@ -1,4 +1,4 @@
-version: "3.3"
+version: "3.7"
 services:
  node_with_redis:
     container_name: node_with_redis
@@ -20,6 +20,10 @@ services:
  redis_container:
     container_name: redis_container
     image: redis:6.0.6-alpine
+    ports:
+      - '6379:6379'
+    links: 
+      - redis_commander_container
 
  redis_commander_container:
     container_name: redis_commander_container
@@ -27,3 +31,5 @@ services:
     restart: always
     ports:
         - "3001:8081"
+    environment:
+      - REDIS_HOSTS=redis_container
