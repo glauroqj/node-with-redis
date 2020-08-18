@@ -1,9 +1,9 @@
-FROM node:14.0.8-alpine3.10
+FROM node:14.8.0-alpine3.10
 
 WORKDIR /app
 
-RUN npm install --unsafe-perm -g yarn && \
-    chmod +x /usr/local/bin/yarn
+# RUN npm install --unsafe-perm -g yarn && \
+#     chmod +x /usr/local/bin/yarn
 
 # ENTRYPOINT ls -la
 

@@ -1,11 +1,16 @@
 version: "3.3"
 services:
-  node_with_redis:
+ node_with_redis:
     container_name: node_with_redis
+    privileged: true
     working_dir: /app
     build:
       context: ./
       dockerfile: ./infra/development/Dockerfile
+    depends_on: 
+        - redis_container
+    links:
+        - redis_container
     volumes:
       - ./:/app
     env_file:
@@ -13,13 +18,13 @@ services:
     ports:
       - "3000:3000"
 
-    redis:
-        container_name: redis_container
-        image: redis:5-alpine
+ redis_container:
+    container_name: redis_container
+    image: redis:6.0.6-alpine
 
-    redis_commander:
-        container_name: redis_commander_container
-        image: rediscommander/redis-commander:latest
-        restart: always
-        ports:
-          - "3001:8081"
+ redis_commander_container:
+    container_name: redis_commander_container
+    image: rediscommander/redis-commander:latest
+    restart: always
+    ports:
+        - "3001:8081"

@@ -13,7 +13,7 @@
     "dev-start": "docker-compose up -d --build && docker ps && yarn dev-logs",
     "dev-stop": "docker-compose stop && docker ps",
     "dev-restart": "yarn dev-stop && yarn dev-start",
-    "dev-logs": "docker logs -f server_side_render",
+    "dev-logs": "docker logs -f node_with_redis",
     "----- DEVELOPER -----": "",
     "dev": "yarn build-server && npm-run-all --parallel dev:*",
     "build-server": "webpack --config webpack/webpack.server.dev.js",
