@@ -9,6 +9,7 @@ export default async ( req, res ) => {
         token: 'token value',
         userID: '123',
         userName: 'Maneiro',
+        refreshToken: 'refresh value',
         cookie: {
             expires: 600000 /** 10 minutes */
         }
