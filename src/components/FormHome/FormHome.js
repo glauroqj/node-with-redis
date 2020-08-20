@@ -13,16 +13,17 @@ const FormHome = ({history}) => {
   })
 
   const callAPI = async () => {
-
-    const response = await fetch('/login-api', {
+    console.log(state)
+    const response = await fetch('/api-login', {
       method: 'POST',
+      body: JSON.stringify(state),
       headers: {
-        'Content-Type': 'application/json'
+        'Accept': 'application/json',
+        'Content-Type': 'application/json;charset=UTF-8'
       },
-      mode: 'no-cors',
-      cache: 'no-cache',
-      credentials: 'same-origin',
-      body: JSON.stringify(state)
+      // mode: 'no-cors',
+      // cache: 'no-cache',
+      // credentials: 'same-origin'
     })
 
     console.log('< RESPONSE > ', response)
