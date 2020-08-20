@@ -1,21 +1,16 @@
 export default async ( req, res ) => {
-    console.log('< LOGIN API CONTROLLER > ', req.body)
+  console.log('< LOGIN API CONTROLLER > ', req.body)
 
-    /** call external api */
+  /** call external api */
 
-    /** change req.session here */
+  /** change req.session here */
+  req.session.token = 'token value'
+  req.session.userID = 456465
+  req.session.userName = 'Maneiro'
+  req.session.refreshToken = 'refresh token value'
+  req.session.cooke.expires = 600000 /** 10 minutes */
 
-    req.session = {
-        token: 'token value',
-        userID: '123',
-        userName: 'Maneiro',
-        refreshToken: 'refresh value',
-        cookie: {
-            expires: 600000 /** 10 minutes */
-        }
-    }
-
-    res.status(200)
-    res.send(`OK`)
-    res.end()
+  res.status(200)
+  res.send(`OK`)
+  res.end()
 }
