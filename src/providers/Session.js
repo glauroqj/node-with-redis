@@ -16,26 +16,35 @@ const SessionProvider = ({ children, session }) => {
   // const [language, setLanguage] = useState(lang)
   // const queryParams = new URLSearchParams(useLocation().search)
   
-
+  console.log('< SESSION PROVIDER > ', session)
+  
   useEffect(() => {
     // _updateLangUrl(lang)
   }, [])
 
-  const _updateLangUrl = lang => {
-    console.log('< LANG > ',lang)
-    /** update url query string lang */
-    queryParams.set('lang', lang)
-    window.history.replaceState({}, '', `${window.location.pathname}?${queryParams.toString()}`)
+  // const _updateLangUrl = lang => {
+  //   console.log('< LANG > ',lang)
+  //   /** update url query string lang */
+  //   queryParams.set('lang', lang)
+  //   window.history.replaceState({}, '', `${window.location.pathname}?${queryParams.toString()}`)
+  // }
+
+  // const switchLanguage = lang => {
+  //   console.log('change language - provider')
+  //   setLanguage(lang)
+  //   _updateLangUrl(lang)
+  // }
+
+  const login = () => {
+    console.log('< LOGIN >')
   }
 
-  const switchLanguage = lang => {
-    console.log('change language - provider')
-    setLanguage(lang)
-    _updateLangUrl(lang)
+  const logout = () => {
+    console.log('< LOGOUT >')
   }
 
   return (
-    <SessionContext.Provider value={{ language, switchLanguage }}>
+    <SessionContext.Provider value={{ login, logout }}>
       {children}
     </SessionContext.Provider>
   )
