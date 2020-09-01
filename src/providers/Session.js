@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react'
 // import { useLocation } from 'react-router-dom'
 
 const SessionContext = React.createContext({
-  language: '',
   login: () => {},
-  logout: () => {}
+  logout: () => {},
+  session: {}
 })
 
 // const arrayLang = ['pt', 'en', 'es']
@@ -42,8 +42,10 @@ const SessionProvider = ({ children, session }) => {
     console.log('< LOGOUT PROVIDER >')
   }
 
+  const test = {name: 'Test'}
+
   return (
-    <SessionContext.Provider value={{ login, logout }}>
+    <SessionContext.Provider value={{ login, logout, session }}>
       {children}
     </SessionContext.Provider>
   )

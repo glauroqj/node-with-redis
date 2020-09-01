@@ -1,5 +1,7 @@
-import React, {useState} from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { withRouter } from 'react-router-dom'
+/** providers */
+import { SessionContext } from 'providers/Session'
 /** style */
 import * as El from './FormHome.style'
 /** components */
@@ -7,10 +9,17 @@ import Input from 'components/Input/Input'
 import Button from 'components/Button/Button'
 
 const FormHome = ({history}) => {
+  /** user session */
+  const { login, session, test } = useContext(SessionContext)
+
   const [state, setState] = useState({
     email: '',
     password: ''
   })
+
+  useEffect(() => {
+    console.log('< FORM HOME : SESSION > ', session, login)
+  }, [session])
 
   const callAPI = async () => {
     console.log(state)

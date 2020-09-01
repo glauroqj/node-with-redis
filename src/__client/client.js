@@ -15,6 +15,7 @@ import { ThemeProvider } from 'styled-components'
 import { Reset } from 'styled-reset'
 import { GlobalStyle, Theme } from 'assets/style'
 /** provider */
+import { SessionProvider } from 'providers/Session'
 import { LanguageProvider } from 'providers/Language'
 
 const client = new ApolloClient({
@@ -48,9 +49,13 @@ const appTree = (
       <ThemeProvider theme={Theme}>
         <GlobalStyle />
         <Reset />
-        <LanguageProvider>
-          <Layout />
-        </LanguageProvider>
+
+        <SessionProvider session={{}}>
+          <LanguageProvider>
+            <Layout />
+          </LanguageProvider>
+        </SessionProvider>
+        
       </ThemeProvider>
     </BrowserRouter>
   </ApolloProvider>

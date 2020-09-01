@@ -15,6 +15,7 @@ import { Reset } from 'styled-reset'
 import { GlobalStyle, Theme } from 'assets/style'
 /** provider */
 import { LanguageProvider } from 'providers/Language'
+import { SessionProvider } from 'providers/Session'
 
 const createApolloClient = (req, res, next) => {
   if (global.Headers == null) {
@@ -59,9 +60,11 @@ const createApolloClient = (req, res, next) => {
         <ThemeProvider theme={Theme}>
           <GlobalStyle />
           <Reset />
-          <LanguageProvider>
-            <Layout />
-          </LanguageProvider>
+          <SessionProvider session={req.session}>
+            <LanguageProvider>
+              <Layout />
+            </LanguageProvider>
+          </SessionProvider>
         </ThemeProvider>
       </StaticRouter>
     </ApolloProvider>

@@ -3,7 +3,6 @@ import Express from 'express'
 import { getDataFromTree } from '@apollo/react-ssr'
 /** core app */
 import createApolloClient from './middlewares/createApolloClient'
-import userSessionMiddleware from './middlewares/userSessionMiddleware'
 /** server routes */
 import serverRoutes from './routes/serverRoutes'
 /** utils */
@@ -13,16 +12,11 @@ const app = new Express()
 
 app.use(Express.static('./build/client'))
 
-// app.use('/', Express.static(path.join(__dirname, './build/client')))
 /** create redis client */
 createRedis(app)
 
-/** user session */
-app.use(userSessionMiddleware)
-
 /** create apollo client */
 app.use(createApolloClient)
-
 
 app.use(async (req, res, next) => {
   try {
