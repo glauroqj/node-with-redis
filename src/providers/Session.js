@@ -4,8 +4,7 @@ import React, { useState, useEffect } from 'react'
 const SessionContext = React.createContext({
   language: '',
   login: () => {},
-  logout: () => {},
-  switchLanguage: () => console.log("change language - context")
+  logout: () => {}
 })
 
 // const arrayLang = ['pt', 'en', 'es']
@@ -36,11 +35,11 @@ const SessionProvider = ({ children, session }) => {
   // }
 
   const login = () => {
-    console.log('< LOGIN >')
+    console.log('< LOGIN PROVIDER >')
   }
 
   const logout = () => {
-    console.log('< LOGOUT >')
+    console.log('< LOGOUT PROVIDER >')
   }
 
   return (
