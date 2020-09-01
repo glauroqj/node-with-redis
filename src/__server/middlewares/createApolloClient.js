@@ -51,6 +51,20 @@ const createApolloClient = (req, res, next) => {
     // }),
   })
 
+  // Write user infos in `APOLLO_STATE`
+  res.apolloClient.writeData({
+    id: 'session',
+    data: {
+      payload: JSON.stringify({
+        token: req?.session?.token || false,
+        refreshToken: req?.session?.refreshToken || false,
+        userName: req?.session?.userName || false,
+        userEmail: req?.session?.userEmail || false,
+        userID: req?.session?.userId || false
+      })
+    }
+  })
+
   const context = {}
 
   // The client-side App will instead use <BrowserRouter>

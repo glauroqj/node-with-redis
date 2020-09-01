@@ -42,8 +42,6 @@ const SessionProvider = ({ children, session }) => {
     console.log('< LOGOUT PROVIDER >')
   }
 
-  const test = {name: 'Test'}
-
   return (
     <SessionContext.Provider value={{ login, logout, session }}>
       {children}

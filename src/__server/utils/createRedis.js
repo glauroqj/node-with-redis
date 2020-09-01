@@ -22,7 +22,7 @@ const createRedis = app => {
       secret: 'redisSecretSession',
       name: '_uSession',
       rolling: false,
-      resave: false,
+      resave: true,
       saveUninitialized: false,
       cookie: {
         secure: false, /** secure true in production env */

@@ -39,6 +39,8 @@ const client = new ApolloClient({
   ssrForceFetchDelay: 100
 })
 
+const userSession = JSON.parse(client?.cache?.data?.data?.session?.payload || '{"token":false,"refreshToken":false,"userName":false,"userEmail":false,"userID":false}')
+
 const rootElement = document.getElementById('root')
 
 console.log('< ROOT ELEMENT > ', rootElement, rootElement.hasChildNodes)
@@ -50,12 +52,12 @@ const appTree = (
         <GlobalStyle />
         <Reset />
 
-        <SessionProvider session={{}}>
+        <SessionProvider session={userSession}>
           <LanguageProvider>
             <Layout />
           </LanguageProvider>
         </SessionProvider>
-        
+
       </ThemeProvider>
     </BrowserRouter>
   </ApolloProvider>

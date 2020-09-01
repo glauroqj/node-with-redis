@@ -8,7 +8,7 @@ export default async ( req, res ) => (
       req.session.userID = 456465
       req.session.userName = 'Maneiro'
       req.session.refreshToken = 'refresh token value'
-      req.session.userMemail = req.body.email
+      req.session.userEmail = req.body.email
       req.session.cookie.expires = 600000 /** 10 minutes */
 
       setTimeout(() => {
