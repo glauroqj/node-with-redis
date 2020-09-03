@@ -10,18 +10,20 @@ import Button from 'components/Button/Button'
 
 const FormHome = ({history}) => {
   /** user session */
-  const { login, session } = useContext(SessionContext)
+  const { login, userSession } = useContext(SessionContext)
 
   const [state, setState] = useState({
     email: '',
     password: ''
   })
 
-  const [step, setStep] = useState('login')
+  const [step, setStep] = useState(userSession?.userName ? 'logged':'login')
 
   useEffect(() => {
-    console.log('< FORM HOME : SESSION > ', session, login)
-  }, [session])
+    console.log('< FORM HOME : SESSION > ', userSession, login)
+
+    userSession?.userName ? setStep('logged') : setStep('login')
+  }, [userSession])
 
   const callAPI = async () => {
     const response = await login(state)
@@ -57,7 +59,7 @@ const FormHome = ({history}) => {
 
       {step === 'logged' && (
         <El.FormBox>
-          <h5>User logged: {`${JSON.stringify(session)}`}</h5>
+          <h5>User logged: {`${JSON.stringify(userSession)}`}</h5>
         </El.FormBox>
       )}
       

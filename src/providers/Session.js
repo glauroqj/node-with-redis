@@ -4,35 +4,19 @@ import React, { useState, useEffect } from 'react'
 const SessionContext = React.createContext({
   login: () => {},
   logout: () => {},
-  session: {}
+  userSession: {}
 })
 
-// const arrayLang = ['pt', 'en', 'es']
-// const _checkLangUrl = lang => arrayLang.includes(lang) ? lang : 'pt'
 
 const SessionProvider = ({ children, session }) => {
-  // const lang = _checkLangUrl( new URLSearchParams(useLocation().search).get('lang') )
-  // const [language, setLanguage] = useState(lang)
-  // const queryParams = new URLSearchParams(useLocation().search)
+
+  const [userSession, setUserSession] = useState(session)
   
   console.log('< SESSION PROVIDER > ', session)
   
   useEffect(() => {
     // _updateLangUrl(lang)
   }, [])
-
-  // const _updateLangUrl = lang => {
-  //   console.log('< LANG > ',lang)
-  //   /** update url query string lang */
-  //   queryParams.set('lang', lang)
-  //   window.history.replaceState({}, '', `${window.location.pathname}?${queryParams.toString()}`)
-  // }
-
-  // const switchLanguage = lang => {
-  //   console.log('change language - provider')
-  //   setLanguage(lang)
-  //   _updateLangUrl(lang)
-  // }
 
   const login = async payload => {
     console.log('< LOGIN PROVIDER >')
@@ -52,7 +36,8 @@ const SessionProvider = ({ children, session }) => {
       
       if (response.ok && response.status === 200) {
         const sessionResponse = await response.json()
-        console.log('< LOGIN OK > ', response, sessionResponse ) 
+        console.log('< LOGIN OK > ', sessionResponse )
+        setUserSession(sessionResponse)
         return true
       }
 
@@ -67,7 +52,7 @@ const SessionProvider = ({ children, session }) => {
   }
 
   return (
-    <SessionContext.Provider value={{ login, logout, session }}>
+    <SessionContext.Provider value={{ login, logout, userSession }}>
       {children}
     </SessionContext.Provider>
   )
