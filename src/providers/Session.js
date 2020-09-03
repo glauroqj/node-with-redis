@@ -43,21 +43,22 @@ const SessionProvider = ({ children, session }) => {
         body: JSON.stringify(payload),
         headers: {
           'Accept': 'application/json',
-          'Content-Type': 'application/json;charset=UTF-8'
+          'Content-Type': 'application/json'
         },
         // mode: 'no-cors',
         // cache: 'no-cache',
         // credentials: 'same-origin'
       })
-      console.log('< LOGIN OK > ', response)
-
-      return ''
+      
+      if (response.ok && response.status === 200) {
+        const sessionResponse = await response.json()
+        console.log('< LOGIN OK > ', response, sessionResponse ) 
+        return true
+      }
 
     } catch (error) {
       console.warn('< LOGIN ERROR > ', error)
-      return {
-        error: 'error login'
-      }
+      return error
     }
   }
 

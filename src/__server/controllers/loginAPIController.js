@@ -13,7 +13,15 @@ export default async ( req, res ) => (
 
       setTimeout(() => {
         res.status(200)
-        resolve(req.session)
+        console.log('< REQ SESSION RESPONSE > ', req.session)
+        
+        res.send({
+          token: req.session.token,
+          userID: req.session.userID,
+          userName: req.session.userName,
+          userEmail: req.session.userEmail,
+          refreshToken: req.session.refreshToken
+        })
         res.end()
       }, 5000)
 
@@ -21,6 +29,12 @@ export default async ( req, res ) => (
     catch(e) {
       res.status(400)
       resolve(false)
+      res.send({
+        error: 'error login',
+        code: 123,
+        status: 400
+      })
+      res.end()
     }
 
   })
