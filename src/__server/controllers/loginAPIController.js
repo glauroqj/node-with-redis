@@ -13,7 +13,7 @@ export default async ( req, res ) => (
 
       setTimeout(() => {
         res.status(200)
-        resolve(true)
+        resolve(req.session)
         res.end()
       }, 5000)
 

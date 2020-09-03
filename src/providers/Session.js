@@ -34,8 +34,31 @@ const SessionProvider = ({ children, session }) => {
   //   _updateLangUrl(lang)
   // }
 
-  const login = () => {
+  const login = async payload => {
     console.log('< LOGIN PROVIDER >')
+
+    try {
+      const response = await fetch('/api-login', {
+        method: 'POST',
+        body: JSON.stringify(payload),
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json;charset=UTF-8'
+        },
+        // mode: 'no-cors',
+        // cache: 'no-cache',
+        // credentials: 'same-origin'
+      })
+      console.log('< LOGIN OK > ', response)
+
+      return ''
+
+    } catch (error) {
+      console.warn('< LOGIN ERROR > ', error)
+      return {
+        error: 'error login'
+      }
+    }
   }
 
   const logout = () => {
