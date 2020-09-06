@@ -10,7 +10,7 @@ import Button from 'components/Button/Button'
 
 const FormHome = ({history}) => {
   /** user session */
-  const { login, userSession } = useContext(SessionContext)
+  const { login, logout, userSession } = useContext(SessionContext)
 
   const [state, setState] = useState({
     email: '',
@@ -20,15 +20,11 @@ const FormHome = ({history}) => {
   const [step, setStep] = useState(userSession?.userName ? 'logged':'login')
 
   useEffect(() => {
-    console.log('< FORM HOME : SESSION > ', userSession, login)
+    console.log('< FORM HOME : SESSION : CLIENT > ', userSession)
 
     userSession?.userName ? setStep('logged') : setStep('login')
   }, [userSession])
 
-  const callAPI = async () => {
-    const response = await login(state)
-
-  }
 
   return (
     <El.FormHomeContainer>
@@ -47,7 +43,9 @@ const FormHome = ({history}) => {
             onChange={ value => setState({...state, password: value}) }
           />
           <Button
-            actionClick={() => callAPI() }
+            actionClick={async () => {
+              const response = await login(state)
+            }}
             // actionClick={() => history.push(`/player/142504352`)}
             color='secondary'
             size='lg'
@@ -59,7 +57,17 @@ const FormHome = ({history}) => {
 
       {step === 'logged' && (
         <El.FormBox>
-          <h5>User logged: {`${JSON.stringify(userSession)}`}</h5>
+          <h5>User logged: {`${userSession.userName}`}</h5>
+          <Button
+            actionClick={async () => {
+              const response = await logout(state)
+            }}
+            // actionClick={() => history.push(`/player/142504352`)}
+            color='secondary'
+            size='lg'
+          >
+            Logout
+          </Button>
         </El.FormBox>
       )}
       
