@@ -6,14 +6,13 @@ import { LanguageContext } from 'providers/Language'
 
 // A Routes file is a good shared entry-point between client and server
 import routes from './routes'
+import ProtectedRoute from './ProtectedRoute'
 
 const Layout = () => {
   const { language, switchLanguage } = useContext(LanguageContext)
 
   return (
     <>
-      {/* New <Switch> behavior introduced in React Router v4
-        https://reacttraining.com/react-router/web/api/Switch */}
       {/* <Navbar /> */}
       <ul>
         <li>Language: {language}</li>
@@ -24,7 +23,11 @@ const Layout = () => {
         </li>
       </ul>
       <Switch>
-        {routes.map(route => <Route key={route.name} {...route} />)}
+        {routes.map(route => 
+          route.protected 
+          ? <ProtectedRoute key={route.name} component={route.component} {...route} />
+          : <Route key={route.name} {...route} />
+        )}
       </Switch>
     </>
   )

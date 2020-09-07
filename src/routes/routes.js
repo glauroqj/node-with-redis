@@ -14,18 +14,21 @@ import {
       name: 'home',
       exact: true,
       component: Home,
+      protected: false
     },
     {
       path: DASHBOARD_PAGE_URL,
       name: 'Dashboard',
       exact: false,
       component: Dashboard,
+      protected: true
     },
     {
       path: NOT_FOUND_URL,
       name: 'notFound',
       exact: false,
       component: NotFound,
+      protected: false
     }
   ]
   
