@@ -21,7 +21,7 @@ app.use(createApolloClient)
 app.use(async (req, res, next) => {
   try {
     await getDataFromTree(res.App)
-    next()
+    !res.finished && next()
   } catch(error) {
     console.warn('< GET DATA FROM TREE : ERROR > ', error)
     res.end()
@@ -52,7 +52,10 @@ app.use(async (req, res, next) => {
   // })
 })
 
-app.use((req, res, next) => {serverRoutes(app), next()})
+app.use((req, res, next) => {
+  serverRoutes(app), 
+  !res.finished && next()
+})
 
 app.listen(process.env.PORT, process.env.HOST, () => console.log( // eslint-disable-line no-console
   `< SERVER RUNNING : PORT ${process.env.PORT} : HOST ${process.env.HOST} >`

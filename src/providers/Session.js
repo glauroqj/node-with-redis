@@ -4,11 +4,13 @@ import React, { useState, useEffect } from 'react'
 const SessionContext = React.createContext({
   login: () => {},
   logout: () => {},
-  userSession: {}
+  userSession: {},
+  redirectFromServer: () => {},
+  redirectFromClient: () => {}
 })
 
 
-const SessionProvider = ({ children, session }) => {
+const SessionProvider = ({ children, session, res }) => {
 
   const [userSession, setUserSession] = useState(session)
   
@@ -51,8 +53,12 @@ const SessionProvider = ({ children, session }) => {
     console.log('< LOGOUT PROVIDER >')
   }
 
+  const redirectFromServer = () => res ? ( res.status(403), res.redirect('/'), res.end() ) : false
+
+  const redirectFromClient = () => window.location.replace('/')
+
   return (
-    <SessionContext.Provider value={{ login, logout, userSession }}>
+    <SessionContext.Provider value={{ login, logout, userSession, redirectFromServer, redirectFromClient }}>
       {children}
     </SessionContext.Provider>
   )

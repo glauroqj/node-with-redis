@@ -1,5 +1,5 @@
 /* Core ----------------------------------------------------- */
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import { Route } from 'react-router-dom'
 /** providers */
@@ -11,7 +11,8 @@ const ProtectRoute = (
     ...rest
   }) => {
   /** user session */
-  const { userSession } = useContext(SessionContext)
+  const { userSession, redirectFromServer, redirectFromClient } = useContext(SessionContext)
+  console.log('< PROTECTED ROUTE > ', userSession, redirectFromServer)
 
   return (
     <Route
@@ -25,12 +26,15 @@ const ProtectRoute = (
             { (typeof document === 'undefined')
               /** server */
               ? (
+                  redirectFromServer(),
                   console.log('< PROTECTED ROUTES REDIRECT : SERVER > ', )
                 )
               /** client */
               : <> 
                   { console.log('< PROTECTED ROUTES REDIRECT : CLIENT > ') }
-                  { window.location.replace('/') }
+                  {/* { window.location.replace('/') } */}
+                  {redirectFromClient()}
+                  <div>Loading...</div>
                 </>
             }
           </>

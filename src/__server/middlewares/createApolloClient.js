@@ -74,7 +74,7 @@ const createApolloClient = (req, res, next) => {
         <ThemeProvider theme={Theme}>
           <GlobalStyle />
           <Reset />
-          <SessionProvider session={req.session}>
+          <SessionProvider session={req.session} res={res}>
             <LanguageProvider>
               <Layout />
             </LanguageProvider>
