@@ -17,7 +17,7 @@ const SessionProvider = ({ children, session, res }) => {
   console.log('< SESSION PROVIDER > ', session)
   
   useEffect(() => {
-    // _updateLangUrl(lang)
+
   }, [])
 
   const login = async payload => {
