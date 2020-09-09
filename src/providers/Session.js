@@ -49,8 +49,40 @@ const SessionProvider = ({ children, session, res }) => {
     }
   }
 
-  const logout = () => {
+  const logout = async () => {
     console.log('< LOGOUT PROVIDER >')
+
+    try {
+      const response = await fetch('/api-logout', {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        // mode: 'no-cors',
+        // cache: 'no-cache',
+        // credentials: 'same-origin'
+      })
+
+      if (response.ok && response.status === 200) {
+        console.log('< LOGOUT RESPONSE : OK > ', response)
+        // const sessionResponse = await response.json()
+        // console.log('< LOGIN OK > ', sessionResponse )
+        setUserSession({
+          token: false,
+          userID: false,
+          userName: false,
+          refreshToken: false,
+          userEmail: false
+        })
+        return true
+      }
+
+    } catch (error) {
+      console.warn('< LOGOUT ERROR > ', error)
+      return error
+    }
+
   }
 
   const redirectFromServer = () => res ? ( res.status(403), res.redirect('/'), res.end() ) : false

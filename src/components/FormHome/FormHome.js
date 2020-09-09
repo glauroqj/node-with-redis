@@ -60,7 +60,7 @@ const FormHome = ({history}) => {
           <h5>User logged: {`${userSession.userName}`}</h5>
           <Button
             actionClick={async () => {
-              const response = await logout(state)
+              const response = await logout()
             }}
             // actionClick={() => history.push(`/player/142504352`)}
             color='secondary'
