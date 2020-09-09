@@ -1,5 +1,5 @@
 export default async ( req, res ) => (
-  new Promise(resolve => {
+  new Promise(() => {
     console.log('< LOGIN API CONTROLLER > ', req.body)
 
     try {
@@ -28,7 +28,6 @@ export default async ( req, res ) => (
     }
     catch(e) {
       res.status(400)
-      resolve(false)
       res.send({
         error: 'error login',
         code: 123,

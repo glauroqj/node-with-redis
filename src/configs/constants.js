@@ -4,3 +4,4 @@ export const NOT_FOUND_URL = '*'
 
 /** api */
 export const LOGIN_API_URL = '/api-login'
+export const LOGOUT_API_URL = '/api-logout'
