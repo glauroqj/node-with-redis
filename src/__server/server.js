@@ -5,6 +5,7 @@ import { getDataFromTree } from '@apollo/react-ssr'
 import createApolloClient from './middlewares/createApolloClient'
 /** server routes */
 import serverRoutes from './routes/serverRoutes'
+import apiRoutes from './routes/apiRoutes'
 /** utils */
 import createRedis from 'server/utils/createRedis'
 
@@ -53,6 +54,7 @@ app.use(async (req, res, next) => {
 })
 
 app.use((req, res, next) => {
+  apiRoutes(app)
   serverRoutes(app), 
   !res.finished && next()
 })
