@@ -8,7 +8,7 @@ import { ServerStyleSheet } from 'styled-components'
 /** layout */
 import Html from '../views/Html'
 
-export default async ( req, res ) => {
+export default ( req, res ) => {
   console.log('< DASHBOARD PAGE CONTROLLER >')
   /* We are ready to render for real */
   const content = renderToString(res.App)

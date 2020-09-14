@@ -12,22 +12,22 @@ const ProtectRoute = (
   }) => {
   /** user session */
   const { userSession, redirectFromServer, redirectFromClient } = useContext(SessionContext)
-  console.log('< PROTECTED ROUTE > ', userSession, redirectFromServer)
+  console.log('< PROTECTED ROUTE > ', userSession.userID, userSession.userName, userSession )
 
   return (
     <Route
       {...rest}
       render={props =>
   
-        (userSession.userId && userSession.userName)
+        (userSession.userID && userSession.userName)
         
-        ? <Component {...props} {...routeStore} />
+        ? <Component {...props} {...rest} />
         : <>
             { (typeof document === 'undefined')
               /** server */
               ? (
-                  redirectFromServer(),
-                  console.log('< PROTECTED ROUTES REDIRECT : SERVER > ', )
+                console.log('< PROTECTED ROUTES REDIRECT : SERVER > ', ),
+                redirectFromServer()
                 )
               /** client */
               : <> 

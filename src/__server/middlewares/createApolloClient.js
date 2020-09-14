@@ -60,7 +60,7 @@ const createApolloClient = (req, res, next) => {
         refreshToken: req?.session?.refreshToken || false,
         userName: req?.session?.userName || false,
         userEmail: req?.session?.userEmail || false,
-        userID: req?.session?.userId || false
+        userID: req?.session?.userID || false
       })
     }
   })
