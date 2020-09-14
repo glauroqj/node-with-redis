@@ -19,10 +19,13 @@ const LanguageSection = () => {
   return (
     <El.LanguageContainer>
       {languageOptions &&
-        languageOptions.map(item => (
-          <El.LanguageItem>
+        languageOptions.map((item, idx) => (
+          <El.LanguageItem key={idx}>
             <Button
               actionClick={() => switchLanguage(item.value)}
+              variant={item.value === language ? 'contained' : 'outline'}
+              size='sm'
+              color='default'
             >
               {item.label}
             </Button>

@@ -24,11 +24,11 @@ const createButtons = (color, fontWeight, space) => ({
     }
   `,
   default: `
-    background-color: ${color.cgrey};
-    border-color: ${color.cgrey};
-    color: ${color.cgrey};
+    background-color: ${color.c_grey};
+    border-color: ${color.c_grey};
+    color: ${color.c_grey};
     &:hover {
-      background-color: ${color.cgrey};
+      background-color: ${color.c_grey};
     }
   `,
   primary: `
