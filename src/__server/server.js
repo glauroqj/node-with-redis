@@ -27,30 +27,6 @@ app.use(async (req, res, next) => {
     console.warn('< GET DATA FROM TREE : ERROR > ', error)
     res.end()
   }
-  // getDataFromTree(res.App)
-  // .then(() => {
-  //   /* We are ready to render for real */
-  //   const content = renderToString(res.App)
-  //   /* prepare style on server */
-  //   const sheet = new ServerStyleSheet()
-  //   const styleTags = sheet.getStyleTags()
-
-  //   const initialState = res.apolloClient.extract()
-  
-  //   const html = <Html
-  //                 styles={styleTags}
-  //                 content={content}
-  //                 state={initialState}
-  //               />
-  
-  //   res.status(200)
-  //   res.send(`<!doctype html>\n${renderToStaticMarkup(html)}`)
-  //   res.end()
-  // })
-  // .catch(error => {
-    // console.warn('< GET DATA FROM TREE : ERROR > ', error)
-    // res.end()
-  // })
 })
 
 app.use((req, res, next) => {
