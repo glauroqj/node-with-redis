@@ -31,17 +31,21 @@ const FormHome = ({history}) => {
 
       {step === 'login' && (
         <El.FormBox>
-          <h5>Please, insert your account ID</h5>
-          <Input 
-            placeholder='email'
-            size='lg'
-            onChange={ value => setState({...state, email: value}) }
-          />
-          <Input 
-            placeholder='password'
-            size='lg'
-            onChange={ value => setState({...state, password: value}) }
-          />
+          <h5>LOGIN</h5>
+          <El.BoxInput>
+            <Input 
+              placeholder='email'
+              size='lg'
+              onChange={ value => setState({...state, email: value}) }
+            />
+          </El.BoxInput>
+          <El.BoxInput>
+            <Input 
+              placeholder='password'
+              size='lg'
+              onChange={ value => setState({...state, password: value}) }
+            />
+          </El.BoxInput>
           <Button
             actionClick={async () => {
               const response = await login(state)

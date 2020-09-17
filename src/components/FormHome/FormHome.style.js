@@ -18,3 +18,6 @@ export const FormBox = styled.div`
     justify-content: center;
   }
 `
+export const BoxInput = styled.div`
+  padding: ${props => props.theme.space[4]};
+`
