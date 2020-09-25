@@ -20,7 +20,7 @@
     "build-client": "webpack --config webpack/webpack.client.dev.js",
     "dev:build-server": "webpack --config webpack/webpack.server.dev.js --watch",
     "dev:build-client": "webpack --config webpack/webpack.client.dev.js --watch",
-    "dev:server": "nodemon --inspect=0.0.0.0:9229 --optimize-for-size --gc-interval=100 --max-old-space-size=400 --trace-gc --trace-gc-ignore-scavenger --max-semi-space-size=64 --watch build --exec \"node build/server/server.bundle.js\""
+    "dev:server": "nodemon --watch build --exec \"node --inspect=0.0.0.0:9229 --optimize-for-size --gc-interval=100 --max-old-space-size=400 --trace-gc --trace-gc-ignore-scavenger --max-semi-space-size=64 build/server/server.bundle.js\""
   },
   "repository": {
     "type": "git",
