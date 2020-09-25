@@ -16,6 +16,7 @@ services:
       - ./infra/development/.env
     ports:
       - "3000:3000"
+      - "9229:9229"
 
  redis_container:
     container_name: redis_container
