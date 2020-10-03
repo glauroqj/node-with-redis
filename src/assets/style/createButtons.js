@@ -9,8 +9,8 @@ const createButtons = (color, fontWeight, space) => ({
     text-align: center;
     cursor: pointer;
     padding: 6px 6px;
-    transition: all .25s ease-in;
-    font-weight: ${fontWeight['medium']}
+    font-weight: ${fontWeight.normal};
+    transition: background-color .3s ease, color .3s ease, border-color .3s ease;
     
     &:hover {
     }
@@ -49,6 +49,17 @@ const createButtons = (color, fontWeight, space) => ({
       color: ${color.c_grey};
       border-color: ${color.c_secondary_dark};
       background-color: ${color.c_secondary_dark};
+    }
+  `,
+  facebook: `
+    background-color: ${color.c_facebook};
+    color: ${color.c_facebook};
+    border-color: ${color.c_facebook};
+    &:hover {
+      color: ${color.c_facebook};
+      opacity: 0.8;
+      background-color: ${color.c_facebook};
+      border-color: ${color.c_facebook};
     }
   `,
   contained: `
