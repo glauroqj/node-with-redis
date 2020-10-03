@@ -56,6 +56,13 @@ const FormHome = ({history}) => {
           >
             Login
           </Button>
+
+          <Button
+            color='facebook'
+            size='lg'
+          >
+            Facebook
+          </Button>
         </El.FormBox>
       )}
 

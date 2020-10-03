@@ -55,7 +55,8 @@ Button.propTypes = {
   color: PropTypes.oneOf([
     'primary',
     'secondary',
-    'default'
+    'default',
+    'facebook'
   ]),
   variant: PropTypes.oneOf([
     'contained',
